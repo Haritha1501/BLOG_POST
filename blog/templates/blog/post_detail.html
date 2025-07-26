@@ -1,0 +1,35 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<main class="cont">
+    <article class="post" >
+        {% if post.published_date %}
+            <time class="date">
+                {{ post.published_date }}
+            </time>
+        {% endif %}
+        <h2 style="background-color: black; color:#b88978; margin: 0%;">{{ post.title }}</h2>
+        <p>{{ post.text|linebreaksbr }}</p>
+        {% if post.image %}  
+            <div class="upload">
+                <h4>    </h4><br>
+                <img src="{{ post.image.url }}" width="500" alt="🅿ℹ©"><br>
+                {% if post.video %}
+                <h4>    </h4><br>
+                <video class="upload1" controls>
+                    <source src="{{ post.video.url }}" type="video/mp4">
+                </video>
+                {% endif %}
+            </div><br>
+        {% endif %}
+        <div class="upl-aud">
+            {% if post.audio %}
+                <h4>   </h4><br>
+                <audio class="upload2" controls>
+                    <source src="{{ post.audio.url }} " type="audio/mp3">
+                </audio>
+            {% endif %}
+        </div>
+    </article>
+</main>
+{% endblock %}
